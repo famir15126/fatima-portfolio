@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fatima Shaikh — Special Educator & Remedial Therapist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FAF7F2;
+      --bg-alt: #F0EBE3;
+      --text: #2C2C2C;
+      --text-muted: #6B6560;
+      --accent: #C4733B;
+      --accent-light: #E8A96B;
+      --accent-soft: rgba(196, 115, 59, 0.08);
+      --border: #DDD5CA;
+      --white: #FFFFFF;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Outfit', -apple-system, sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(250, 247, 242, 0.85);
+      border-bottom: 1px solid var(--border);
+      transition: transform 0.3s ease;
+    }
+    nav .nav-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+    nav .logo {
+      font-family: var(--serif); font-size: 1.15rem; color: var(--text);
+      text-decoration: none; letter-spacing: -0.01em;
+    }
+    nav .logo span { color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul li a {
+      text-decoration: none; color: var(--text-muted); font-size: 0.85rem;
+      font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover { color: var(--accent); }
+
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px; background: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 8rem 2rem 4rem;
+      max-width: 1120px; margin: 0 auto;
+    }
+    .hero-content { max-width: 700px; }
+    .hero-label {
+      display: inline-block; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.5rem;
+      padding: 0.4rem 1rem; border: 1px solid var(--accent);
+      border-radius: 100px;
+    }
+    .hero h1 {
+      font-family: var(--serif); font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1.1; color: var(--text); margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em {
+      font-style: italic; color: var(--accent);
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--text-muted); max-width: 540px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--accent); color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 100px;
+      text-decoration: none; font-weight: 500; font-size: 0.9rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover { background: #b5662f; transform: translateY(-1px); }
+    .hero-cta svg { width: 16px; height: 16px; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1120px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.01em;
+    }
+    .section-subtitle {
+      color: var(--text-muted); font-size: 1.05rem; max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: start;
+    }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .stat {
+      padding: 1.5rem; background: var(--white);
+      border: 1px solid var(--border); border-radius: 12px;
+    }
+    .stat-number {
+      font-family: var(--serif); font-size: 2rem; color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem; color: var(--text-muted);
+      margin-top: 0.3rem; font-weight: 400;
+    }
+
+    .about-right p {
+      color: var(--text-muted); margin-bottom: 1.2rem; font-size: 1rem;
+    }
+
+    /* ── EXPERTISE ── */
+    .expertise-section { background: var(--bg-alt); }
+    .expertise-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .expertise-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 2rem 1.8rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .expertise-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+    }
+    .expertise-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--accent-soft); display: flex;
+      align-items: center; justify-content: center; margin-bottom: 1.2rem;
+      color: var(--accent); font-size: 1.3rem;
+    }
+    .expertise-card h3 {
+      font-family: var(--serif); font-size: 1.15rem; margin-bottom: 0.6rem;
+    }
+    .expertise-card p {
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.65;
+    }
+
+    /* ── DIAGNOSES / SERVICES ── */
+    .diagnoses-wrap {
+      display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1rem;
+    }
+    .tag {
+      padding: 0.5rem 1.2rem; border-radius: 100px; font-size: 0.82rem;
+      font-weight: 400; border: 1px solid var(--border); background: var(--white);
+      color: var(--text); transition: all 0.2s;
+    }
+    .tag:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* ── APPROACH ── */
+    .approach-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .approach-card {
+      padding: 2rem; border-radius: 14px; border: 1px solid var(--border);
+      background: var(--white);
+    }
+    .approach-card h3 {
+      font-family: var(--serif); font-size: 1.1rem; margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .approach-card h3 .num {
+      font-family: var(--sans); font-size: 0.7rem; font-weight: 600;
+      color: var(--accent); background: var(--accent-soft);
+      width: 28px; height: 28px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .approach-card ul {
+      list-style: none; padding: 0;
+    }
+    .approach-card ul li {
+      font-size: 0.88rem; color: var(--text-muted);
+      padding: 0.35rem 0; padding-left: 1rem;
+      position: relative;
+    }
+    .approach-card ul li::before {
+      content: ''; position: absolute; left: 0; top: 0.75rem;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent-light);
+    }
+
+    /* ── TOOLS ── */
+    .tools-section { background: var(--bg-alt); }
+    .tools-columns {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    }
+    .tool-group h3 {
+      font-family: var(--serif); font-size: 1.05rem;
+      margin-bottom: 1rem; color: var(--text);
+    }
+    .tool-group ul { list-style: none; }
+    .tool-group ul li {
+      font-size: 0.88rem; color: var(--text-muted);
+      padding: 0.5rem 0; border-bottom: 1px solid var(--border);
+    }
+    .tool-group ul li:last-child { border-bottom: none; }
+
+    /* ── EXPERIENCE ── */
+    .exp-item {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-header {
+      display: flex; justify-content: space-between;
+      align-items: baseline; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .exp-header h3 { font-family: var(--serif); font-size: 1.2rem; }
+    .exp-location {
+      font-size: 0.8rem; color: var(--accent); font-weight: 500;
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .exp-item p {
+      color: var(--text-muted); font-size: 0.92rem; max-width: 680px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--text); color: var(--bg); text-align: center;
+    }
+    .contact-section .section-label { color: var(--accent-light); }
+    .contact-section .section-title { color: var(--bg); }
+    .contact-section .section-subtitle { color: rgba(250,247,242,0.6); margin-inline: auto; }
+    .contact-links {
+      display: flex; justify-content: center; gap: 1.5rem;
+      flex-wrap: wrap; margin-top: 2rem;
+    }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.8rem 1.8rem; border-radius: 100px;
+      border: 1px solid rgba(250,247,242,0.2);
+      color: var(--bg); text-decoration: none; font-size: 0.88rem;
+      font-weight: 400; transition: all 0.2s;
+    }
+    .contact-link:hover {
+      border-color: var(--accent-light); color: var(--accent-light);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2rem;
+      background: var(--text); border-top: 1px solid rgba(250,247,242,0.08);
+    }
+    footer p { font-size: 0.75rem; color: rgba(250,247,242,0.35); }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .expertise-grid { grid-template-columns: 1fr 1fr; }
+      .approach-grid { grid-template-columns: 1fr; }
+      .tools-columns { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      nav ul.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(250,247,242,0.97); backdrop-filter: blur(20px);
+        padding: 1.5rem 2rem; gap: 1.2rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .hamburger { display: flex; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      section { padding: 3.5rem 1.25rem; }
+      .hero { padding: 7rem 1.25rem 3rem; }
+      .hero h1 { font-size: 2.4rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">Fatima<span>.</span></a>
+      <button class="hamburger" aria-label="Menu" onclick="document.querySelector('nav ul').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-label">Special Educator · Remedial Therapist</span>
+      <h1>Every child deserves someone who <em>believes</em> in them</h1>
+      <p>With 3+ years of heart-led experience supporting children with Autism, ADHD, Learning Disabilities and more — I build safe, nurturing learning spaces where every child feels seen, understood and empowered to grow at their own beautiful pace.</p>
+      <a href="#contact" class="hero-cta">
+        Let's Talk About Your Child
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container reveal">
+      <div class="about-grid">
+        <div>
+          <p class="section-label">About</p>
+          <h2 class="section-title">Rooted in compassion, guided by understanding</h2>
+          <div class="about-stats">
+            <div class="stat"><div class="stat-number">3+</div><div class="stat-label">Years Experience</div></div>
+            <div class="stat"><div class="stat-number">5–15</div><div class="stat-label">Age Groups Served</div></div>
+            <div class="stat"><div class="stat-number">7+</div><div class="stat-label">Diagnoses Managed</div></div>
+            <div class="stat"><div class="stat-number">1:1</div><div class="stat-label">& Small Group Settings</div></div>
+          </div>
+        </div>
+        <div class="about-right">
+          <p>I hold a Bachelor's degree in Special Education with a specialisation in Learning Disability. My work centres on building trusting, one-on-one relationships and small group connections with children aged 5 to 15 — because real learning begins when a child feels safe.</p>
+          <p>I support children across a wide spectrum of needs — Autism Spectrum Disorder, ADHD, Specific Learning Disabilities in reading, writing and maths, Cerebral Palsy, Down Syndrome, Sensory Processing Disorder, and Gifted learners. No two children are alike, and no two plans should be either.</p>
+          <p>Before setting a single goal, I take the time to truly understand each child — using diagnostic tools like DTLD, DTRD, GLAD, and the Aston Index alongside careful observation. Because the right support starts with the right understanding.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGNOSES TAGS -->
+  <section style="padding-top: 0;">
+    <div class="container reveal">
+      <p class="section-label">Diagnoses & Areas</p>
+      <div class="diagnoses-wrap">
+        <span class="tag">Autism Spectrum Disorder</span>
+        <span class="tag">ADHD</span>
+        <span class="tag">SLD — Reading</span>
+        <span class="tag">SLD — Writing</span>
+        <span class="tag">SLD — Maths</span>
+        <span class="tag">Cerebral Palsy</span>
+        <span class="tag">Down Syndrome</span>
+        <span class="tag">Sensory Processing Disorder</span>
+        <span class="tag">Gifted Learners</span>
+        <span class="tag">Receptive & Expressive Language</span>
+        <span class="tag">Written Expression & Literacy</span>
+        <span class="tag">Handwriting Remediation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise" class="expertise-section">
+    <div class="container reveal">
+      <p class="section-label">Expertise</p>
+      <h2 class="section-title">What I bring to the table</h2>
+      <p class="section-subtitle">Patience, warmth and clinical precision — woven together to give every child the care they deserve.</p>
+      <div class="expertise-grid">
+        <div class="expertise-card">
+          <div class="expertise-icon">📋</div>
+          <h3>Assessment & IEP</h3>
+          <p>Thoughtful evaluations using DTLD, DTRD, GLAD and the Aston Index. Every IEP is built hand-in-hand with parents, teachers and therapists — because a child thrives when the adults around them are aligned.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon">🧩</div>
+          <h3>Curriculum Modification</h3>
+          <p>Functional academics, hi-lo texts, micro-task breakdowns, alternate outputs and portfolio-based evidence. Every modification honours where the child is right now — and gently stretches them forward.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon">💡</div>
+          <h3>Multi-Sensory Instruction</h3>
+          <p>Gamification, scaffolding, visual schedules, PECS, social stories and task analysis — engaging multiple senses so that learning feels less like work and more like discovery.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon">🤝</div>
+          <h3>Behaviour & Social Skills</h3>
+          <p>Gentle PBIS reward systems, calm crisis de-escalation, co-regulation and structured social skills training. I meet children in their emotions first — the learning follows.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon">🖥️</div>
+          <h3>Assistive Technology</h3>
+          <p>From pencil grips and coloured overlays to AAC apps and speech-to-text — the right tool can be the bridge between frustration and confidence. I find that bridge for each child.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon">👨‍👩‍👧</div>
+          <h3>Family-Centred Collaboration</h3>
+          <p>You know your child best. I partner closely with families, OTs, SLPs, counsellors and school teams — keeping everyone connected from post-session debriefs to six-monthly reviews.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach">
+    <div class="container reveal">
+      <p class="section-label">My Process</p>
+      <h2 class="section-title">The IEP journey</h2>
+      <p class="section-subtitle">A thoughtful, six-stage process that keeps the child — and the family — at the heart of every decision.</p>
+      <div class="approach-grid">
+        <div class="approach-card">
+          <h3><span class="num">01</span> Referral & Screening</h3>
+          <ul>
+            <li>Identifying the performance gap</li>
+            <li>Screening with GLAD, Aston Index and checklists</li>
+            <li>Confirming the need for support</li>
+          </ul>
+        </div>
+        <div class="approach-card">
+          <h3><span class="num">02</span> Baseline Assessment</h3>
+          <ul>
+            <li>Multi-stakeholder evaluation (SE, OT, SLP, Psych)</li>
+            <li>Establishing current level of performance</li>
+            <li>Parental and school concern alignment</li>
+          </ul>
+        </div>
+        <div class="approach-card">
+          <h3><span class="num">03</span> Collaborative Programming</h3>
+          <ul>
+            <li>IEP meeting with full team</li>
+            <li>Aligning goals across parents, teachers and specialists</li>
+            <li>Formal placement in appropriate support category</li>
+          </ul>
+        </div>
+        <div class="approach-card">
+          <h3><span class="num">04</span> SMART Goal Setting</h3>
+          <ul>
+            <li>Annual "big picture" targets</li>
+            <li>Short-term micro-step objectives</li>
+            <li>Specific, measurable, achievable, realistic and time-bound</li>
+          </ul>
+        </div>
+        <div class="approach-card">
+          <h3><span class="num">05</span> Implementation</h3>
+          <ul>
+            <li>Accommodations — changing how they learn</li>
+            <li>Modifications — changing what they learn</li>
+            <li>Assistive technology integration</li>
+          </ul>
+        </div>
+        <div class="approach-card">
+          <h3><span class="num">06</span> Monitoring & Review</h3>
+          <ul>
+            <li>Daily and weekly data tracking</li>
+            <li>Periodic progress reporting to stakeholders</li>
+            <li>Six-monthly review to reset or retire goals</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="tools-section">
+    <div class="container reveal">
+      <p class="section-label">Tools & Tech</p>
+      <h2 class="section-title">Assistive technology toolkit</h2>
+      <p class="section-subtitle">Matched to each learner's needs — from simple grips to AI-powered apps.</p>
+      <div class="tools-columns">
+        <div class="tool-group">
+          <h3>Low-Tech</h3>
+          <ul>
+            <li>Pencil grips & weighted pens</li>
+            <li>Slanted writing boards</li>
+            <li>Page magnifiers & coloured overlays</li>
+            <li>PECS & communication boards</li>
+            <li>Fidgets & weighted lap pads</li>
+            <li>Noise-cancelling headphones</li>
+          </ul>
+        </div>
+        <div class="tool-group">
+          <h3>Mid-Tech</h3>
+          <ul>
+            <li>Portable audio recorders</li>
+            <li>Digital timers</li>
+            <li>Calculators</li>
+            <li>Voice output devices</li>
+          </ul>
+        </div>
+        <div class="tool-group">
+          <h3>High-Tech & Platforms</h3>
+          <ul>
+            <li>AWAAZ AAC App</li>
+            <li>Speech-to-text dictation</li>
+            <li>Word prediction software</li>
+            <li>Text-to-speech readers</li>
+            <li>Digital whiteboards</li>
+            <li>Quizizz & Kahoot</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container reveal">
+      <p class="section-label">Experience</p>
+      <h2 class="section-title">Where I've made an impact</h2>
+      <p class="section-subtitle">Every setting is different, but the heart of the work stays the same — showing up for each child with patience, creativity and care.</p>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <h3>Special Educator & Remedial Therapist</h3>
+          <span class="exp-location">In-Person · India</span>
+        </div>
+        <p>One-on-one and small group sessions (5–7 students) for children aged 5–15 across ASD, ADHD, SLD, Cerebral Palsy, Down Syndrome and SPD. Full IEP development, behaviour management and multi-stakeholder collaboration.</p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <h3>International Online 1-on-1 Sessions</h3>
+          <span class="exp-location">Remote · USA & India</span>
+        </div>
+        <p>Delivered remote remedial support to students in Boston and Philadelphia — covering core literacy, numeracy, handwriting remediation, creative thinking and advanced maths. Adapted Pratham A-Level curriculum entirely to digital format for an India-based student.</p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <h3>Summer Camp — Lead Teacher</h3>
+          <span class="exp-location">Grades 1–3</span>
+        </div>
+        <p>Designed and led a "Future Skills" summer programme introducing young children to AI concepts, inference labs, team challenges and creative problem-solving — all with inclusive, multi-learning-style delivery.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container reveal">
+      <p class="section-label">Reach Out</p>
+      <h2 class="section-title">Your child's journey starts with a conversation</h2>
+      <p class="section-subtitle">Whether you're a parent looking for the right support, a school seeking a compassionate specialist, or a fellow professional — I'm here to listen. No question is too small.</p>
+      <div class="contact-links">
+        <a href="mailto:Fatimashaikh111222@gmail.com" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+          Email Me
+        </a>
+        <a href="https://www.linkedin.com/in/fatima-shaikh-7196051a7/" class="contact-link" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Connect on LinkedIn
+        </a>
+        <a href="https://wa.me/918446244214" class="contact-link" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.685-1.489A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.37 0-4.567-.82-6.3-2.186l-.44-.365-3.095.983.994-3.005-.397-.462A9.948 9.948 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+          Message on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Fatima Shaikh. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Close mobile nav on link click
+    document.querySelectorAll('nav ul li a').forEach(a => {
+      a.addEventListener('click', () => document.querySelector('nav ul').classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
